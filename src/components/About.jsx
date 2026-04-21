@@ -192,7 +192,7 @@ const About = () => {
               fontSize: '0.8rem',
               marginTop: '4px'
             }}>
-              Engineering College
+              2022-2026 | Guru Gobind Singh Indraprastha University
             </p>
           </div>
         </div>
