@@ -23,6 +23,7 @@ const skillGroups = [
       { name: 'Node.js', level: 72, note: 'Intermediate' },
       { name: 'Express.js', level: 75, note: 'Intermediate' },
       { name: 'MongoDB', level: 80, note: 'Intermediate' },
+      { name: 'Firebase', level: 80, note: 'Intermediate' },
     ]
   },
   {
@@ -30,7 +31,8 @@ const skillGroups = [
     skills: [
       { name: 'Git & GitHub', level: 80, note: 'Proficient' },
       { name: 'Postman', level: 75, note: 'Intermediate' },
-      { name: 'Render / Vite', level: 79, note: 'Basic' },
+      { name: 'Render / Vite', level: 79, note: 'Intermediate' },
+      { name: 'Redis', level: 65, note: 'Basic' },
     ]
   },
 ];
