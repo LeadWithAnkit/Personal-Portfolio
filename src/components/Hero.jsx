@@ -17,11 +17,11 @@ const Hero = () => {
     let timeout;
 
     if (!deleting && displayed.length < current.length) {
-      timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 80);
+      timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 75);
     } else if (!deleting && displayed.length === current.length) {
-      timeout = setTimeout(() => setDeleting(true), 2000);
+      timeout = setTimeout(() => setDeleting(true), 2500);
     } else if (deleting && displayed.length > 0) {
-      timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 40);
+      timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 35);
     } else if (deleting && displayed.length === 0) {
       setDeleting(false);
       setRoleIndex((roleIndex + 1) % roles.length);
@@ -35,167 +35,190 @@ const Hero = () => {
       id="hero"
       style={{
         minHeight: '100vh',
-        padding: '0 2rem',
-        maxWidth: '1100px',
+        padding: '80px 2rem 0',
+        maxWidth: '1400px',
         margin: '0 auto',
         position: 'relative',
+        background: 'linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)',
+        backgroundSize: '80px 80px',
+        backgroundAttachment: 'fixed',
       }}
-    >
-      {/* Background grid */}
-      <div style={{
-        position: 'fixed', inset: 0, zIndex: -1,
-        backgroundImage: `linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)`,
-        backgroundSize: '60px 60px',
-        opacity: 0.3,
-        maskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent)',
-      }} />
-
-      {/* Glow */}
-      <div style={{
-        position: 'fixed',
-        top: '-20%',
-        left: '30%',
-        width: '500px',
-        height: '500px',
-        background: 'radial-gradient(circle, rgba(196,169,107,0.08) 0%, transparent 70%)',
-        zIndex: -1,
-      }} />
-
-      {/* MAIN GRID */}
+    >   
       <div
         className="hero-container"
         style={{
           display: 'grid',
-          gridTemplateColumns: '1.2fr 0.8fr',
+          gridTemplateColumns: '1.5fr 0.8fr',
           alignItems: 'center',
-          gap: '3rem',
-          minHeight: '100vh',
+          gap: '6rem',
+          minHeight: '90vh',
           opacity: visible ? 1 : 0,
-          transform: visible ? 'none' : 'translateY(30px)',
-          transition: 'all 0.9s ease'
+          transform: visible ? 'none' : 'translateY(40px)',
+          transition: 'all 1s cubic-bezier(0.34, 1.56, 0.64, 1)'
         }}
       >
-
         {/* LEFT SIDE */}
-        <div>
-
-          {/* Status */}
-          <div style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            background: 'rgba(74,222,128,0.08)',
-            border: '1px solid rgba(74,222,128,0.2)',
-            borderRadius: '100px',
-            padding: '6px 14px',
+        <div style={{
+          opacity: visible ? 1 : 0,
+          transform: visible ? 'none' : 'translateY(30px)',
+          transition: 'all 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s'
+        }}>
+          {/* Subheading */}
+          <p style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: '1.1rem',
+            color: 'var(--accent)',
+            fontWeight: 600,
+            letterSpacing: '2px',
             marginBottom: '2rem',
+            textTransform: 'uppercase',
           }}>
-            <span style={{
-              width: '7px',
-              height: '7px',
-              borderRadius: '50%',
-              background: 'var(--green)',
-            }} />
-            <span style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.72rem',
-              color: 'var(--green)',
-            }}>
-              Open to Opportunities
-            </span>
-          </div>
+            FULL STACK ENGINEER
+          </p>
 
-          {/* Name */}
+          {/* Main Heading */}
           <h1 style={{
             fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(2.8rem, 8vw, 6.5rem)',
-            fontWeight: 800,
-            lineHeight: 0.95,
-            letterSpacing: '-0.04em',
-            marginBottom: '1rem',
+              fontSize: 'clamp(2.5rem, 8vw, 5.5rem)',
+              wordSpacing: '0.1em',
+            fontWeight: 900,
+            lineHeight: 0.9,
+            letterSpacing: '-0.02em',
+            marginBottom: '2rem',
+            color: 'var(--text)',
           }}>
-            Ankit<br />
-            <span style={{ color: 'var(--accent)' }}>Kumar</span><br />
-            Tiwari
+            FULL STACK<br />
+            <span style={{ color: 'var(--accent)' }}>DEVELOPER</span><br />
+            & MERN
           </h1>
-
-          {/* Typewriter */}
-          <div style={{ marginBottom: '2rem', display: 'flex', alignItems: 'center' }}>
-            <span style={{ color: 'var(--accent2)' }}>{displayed}</span>
-            <span style={{ color: 'var(--accent)' }}>|</span>
-          </div>
 
           {/* Bio */}
           <p style={{
-            maxWidth: '500px',
+            maxWidth: '600px',
             color: 'var(--text2)',
-            lineHeight: 1.7,
-            marginBottom: '2.5rem',
+            lineHeight: 1.8,
+            marginBottom: '3rem',
+            fontSize: '1.05rem',
+            letterSpacing: '0.3px'
           }}>
-           Software Engineer with expertise in MERN full-stack development, backend API design, and Data Structures & Algorithms. Experienced
-           in building and deploying scalable web applications with a focus on performance, security, and clean, maintainable architecture.
-           Passionate about problem-solving and building impactful tech solutions
+            Building scalable web applications with modern tech stack. Specialized in MERN full-stack development, clean architecture, and performance optimization. Passionate about creating impactful digital solutions.
           </p>
 
-          {/* Buttons */}
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '3rem' }}>
+          {/* CTA Buttons */}
+          <div style={{
+            display: 'flex',
+            gap: '1.5rem',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            marginBottom: '3rem'
+          }}>
             <button
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
               style={{
-                padding: '14px 32px',
+                padding: '16px 40px',
                 background: 'var(--accent)',
-                color: 'var(--bg)',
+                color: 'white',
                 border: 'none',
-                borderRadius: '6px',
+                borderRadius: '50px',
                 fontWeight: 700,
+                fontSize: '1rem',
                 cursor: 'pointer',
+                letterSpacing: '0.5px',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 8px 20px rgba(255, 87, 34, 0.2)',
+              }}
+              onMouseEnter={e => {
+                e.target.style.transform = 'translateY(-2px)';
+                e.target.style.boxShadow = '0 12px 30px rgba(255, 87, 34, 0.3)';
+              }}
+              onMouseLeave={e => {
+                e.target.style.transform = 'translateY(0)';
+                e.target.style.boxShadow = '0 8px 20px rgba(255, 87, 34, 0.2)';
               }}
             >
-              View Projects
+              View My Work
             </button>
 
-            <button
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            <a
+              href="/Ankit_Resume1.pdf"
+              download="Ankit_Kumar_Tiwari_Resume.pdf"
               style={{
-                padding: '14px 32px',
-                background: 'transparent',
+                padding: '16px 40px',
+                background: 'white',
                 color: 'var(--text)',
-                border: '1px solid var(--border2)',
-                borderRadius: '6px',
+                border: '2px solid var(--accent)',
+                borderRadius: '50px',
+                fontWeight: 700,
+                fontSize: '1rem',
                 cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                display: 'inline-block',
+              }}
+              onMouseEnter={e => {
+                e.target.style.background = 'var(--accent)';
+                e.target.style.color = 'white';
+              }}
+              onMouseLeave={e => {
+                e.target.style.background = 'white';
+                e.target.style.color = 'var(--text)';
               }}
             >
-              Contact Me
-            </button>
+              Download Resume
+            </a>
           </div>
 
+          {/* Stats */}
+          <div style={{
+            display: 'flex',
+            gap: '3rem',
+            marginTop: '4rem',
+            borderTop: '1px solid var(--border)',
+            paddingTop: '2rem',
+          }}>
+            <div>
+              <p style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--accent)' }}>10+</p>
+              <p style={{ color: 'var(--text2)', fontSize: '0.95rem' }}>Projects Built</p>
+            </div>
+            <div>
+              <p style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--accent)' }}>MERN</p>
+              <p style={{ color: 'var(--text2)', fontSize: '0.95rem' }}>Tech Stack</p>
+            </div>
+            <div>
+              <p style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--accent)' }}>2026</p>
+              <p style={{ color: 'var(--text2)', fontSize: '0.95rem' }}>Graduating</p>
+            </div>
+          </div>
         </div>
 
-        {/* RIGHT SIDE IMAGE */}
-        <div className="hero-image" style={{
+        {/* RIGHT SIDE - PROFILE */}
+        <div style={{
           display: 'flex',
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'center',
+          opacity: visible ? 1 : 0,
+          transform: visible ? 'none' : 'translateX(40px)',
+          transition: 'all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s'
         }}>
           <div style={{
-            width: '260px',
-            height: '320px',
-            borderRadius: '16px',
+            width: '320px',
+            height: '420px',
+            borderRadius: '24px',
             overflow: 'hidden',
-            border: '1px solid var(--border)',
+            border: '2px solid var(--border)',
+            boxShadow: '0 20px 60px rgba(0,0,0,0.08)',
+            position: 'relative',
           }}>
             <img
               src="/profile.jpg"
-              alt="Ankit"
+              alt="Ankit Kumar Tiwari"
               style={{
                 width: '100%',
                 height: '100%',
-                objectFit: 'cover'
+                objectFit: 'cover',
               }}
             />
           </div>
         </div>
-
       </div>
 
       {/* RESPONSIVE */}
@@ -203,27 +226,18 @@ const Hero = () => {
         @media (max-width: 1024px) {
           .hero-container {
             grid-template-columns: 1fr 1fr !important;
+            gap: 4rem !important;
           }
         }
 
         @media (max-width: 768px) {
           .hero-container {
             grid-template-columns: 1fr !important;
-          }
-
-          .hero-image {
-            margin-top: 2rem;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .hero-image div {
-            width: 200px !important;
-            height: 260px !important;
+            gap: 2rem !important;
+            minHeight: auto !important;
           }
         }
       `}</style>
-
     </section>
   );
 };

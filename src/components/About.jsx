@@ -184,7 +184,7 @@ const About = () => {
               color: 'var(--text)',
               fontSize: '0.9rem'
             }}>
-              B.Tech — Computer Science
+              B.Tech — Computer Science & Engg.
             </p>
 
             <p style={{
